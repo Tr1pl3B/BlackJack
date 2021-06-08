@@ -4,7 +4,7 @@ public class Participant {
 	
 	private int cardvalue;
 	
-	public Card pickCard() {
+	public CardDeck pickCard() {
 		
 	}
 	

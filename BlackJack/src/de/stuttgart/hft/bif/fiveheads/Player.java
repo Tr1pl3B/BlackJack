@@ -13,7 +13,7 @@ public class Player extends Participant {
 		
 	}
 	
-	public boolean split(Card[] p, int stack) {
+	public boolean split(CardDeck[] p, int stack) {
 		
 	}
 	
