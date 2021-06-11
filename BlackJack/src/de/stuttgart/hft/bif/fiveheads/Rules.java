@@ -3,7 +3,9 @@ package de.stuttgart.hft.bif.fiveheads;
 public class Rules {
 
 	public boolean winner(Player p, Dealer d) {
-		if(p.)
+		if((int i = 0) == 0) {
+			
+		}
 	}
 	
 	public boolean burned(CardDeck[] a) {
