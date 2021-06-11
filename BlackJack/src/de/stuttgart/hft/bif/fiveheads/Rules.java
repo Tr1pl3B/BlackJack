@@ -1,7 +1,7 @@
 package de.stuttgart.hft.bif.fiveheads;
 
 public class Rules {
-
+//Test//
 	public boolean winner(Player p, Dealer d) {
 		
 	}
