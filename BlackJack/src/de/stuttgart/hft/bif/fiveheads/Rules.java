@@ -3,20 +3,18 @@ package de.stuttgart.hft.bif.fiveheads;
 public class Rules {
 
 	public boolean winner(Player p, Dealer d) {
-		if((int i = 0) == 0) {
-			
-		}
-	}
-	
-	public boolean burned(CardDeck[] a) {
 		
 	}
 	
-	public boolean blackJack(CardDeck[] a) {
+	public boolean burned(Participant p) {
 		
 	}
 	
-	public boolean trippleSeven(CardDeck[] a) {
+	public boolean blackJack(Participant p) {
+		
+	}
+	
+	public boolean trippleSeven(Participant p) {
 	
 	}
 }

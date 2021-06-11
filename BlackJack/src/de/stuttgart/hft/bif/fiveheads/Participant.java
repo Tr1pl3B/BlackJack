@@ -1,12 +1,23 @@
 package de.stuttgart.hft.bif.fiveheads;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Participant {
-	
-	private Card[] myCards;
+
 	private int cardvalue;
+	private CardHand myHand;
+	private BlackJackCardDeck playDeck = new BlackJackCardDeck();
 	
-	public BlackJackCardDeck pickCard() {
-		
+	Participant(){
+		myHand = new CardHand(this);
+	}
+	
+	public void pickCard() {
+		Random number = new Random();
+		int upperbound = 312;
+		int random_number = number.nextInt(upperbound);
+		myHand.adCard(playDeck.getCard(random_number));
 	}
 	
 	public void goOut() {
@@ -17,5 +28,8 @@ public class Participant {
 		
 	}
 	
+	public CardHand getMyHand() {
+		return myHand;
+	}
 	
 }

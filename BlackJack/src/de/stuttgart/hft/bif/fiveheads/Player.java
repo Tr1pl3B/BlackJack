@@ -4,7 +4,7 @@ public class Player extends Participant {
 	private int credit;
 	private int stack;
 	private int insurance;
-	private CardHand myHand;
+	
 	
 	public boolean doubleIt(int stack) {
 		

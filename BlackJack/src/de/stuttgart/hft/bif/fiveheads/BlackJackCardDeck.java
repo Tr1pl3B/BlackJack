@@ -20,6 +20,10 @@ public class BlackJackCardDeck {
 			}
 		}
 	}
+	
+	public Card getCard(int poss) {
+		return deck[poss];
+	}
 
 	@Override
 	public String toString() {

@@ -6,7 +6,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		BlackJackCardDeck playDeck = new BlackJackCardDeck();
-
+		Player p = new Player();
+		p.pickCard();
+		System.out.println(p.getMyHand());
 	}
 }
