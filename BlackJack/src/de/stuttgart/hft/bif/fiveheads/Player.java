@@ -4,6 +4,7 @@ public class Player extends Participant {
 	private int credit;
 	private int stack;
 	private int insurance;
+	private CardHand myHand;
 	
 	public boolean doubleIt(int stack) {
 		
@@ -13,7 +14,7 @@ public class Player extends Participant {
 		
 	}
 	
-	public boolean split(CardDeck[] p, int stack) {
+	public boolean split(BlackJackCardDeck[] p, int stack) {
 		
 	}
 	

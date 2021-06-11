@@ -2,9 +2,10 @@ package de.stuttgart.hft.bif.fiveheads;
 
 public class Participant {
 	
+	private Card[] myCards;
 	private int cardvalue;
 	
-	public CardDeck pickCard() {
+	public BlackJackCardDeck pickCard() {
 		
 	}
 	
