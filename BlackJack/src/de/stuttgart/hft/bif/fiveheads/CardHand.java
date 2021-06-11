@@ -9,8 +9,6 @@ public class CardHand {
 	
 	CardHand(Participant p){
 		myCards = new ArrayList<Card>();
-		p.pickCard();
-		p.pickCard();
 	}
 	
 	public void adCard(Card c) {
