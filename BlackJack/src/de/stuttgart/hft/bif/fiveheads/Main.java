@@ -9,6 +9,5 @@ public class Main {
 		Player p = new Player();
 		p.pickCard();
 		System.out.println(p.getMyHand());
-		//Levi hat nen kleinen Schwanni
 	}
 }
