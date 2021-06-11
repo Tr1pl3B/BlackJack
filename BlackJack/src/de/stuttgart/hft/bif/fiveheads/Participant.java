@@ -25,7 +25,28 @@ public class Participant {
 	}
 	
 	public int getCardvalue() {
-		
+		this.cardvalue = 0;
+		for(Card card : this.myHand.getMyCards()) {
+			switch (card.getValue()) {
+			
+			case "Jack":
+				this.cardvalue += 10;
+				
+			case "Queen":
+				this.cardvalue += 10;
+				
+			case "King":
+				this.cardvalue += 10;
+				
+			case "Ace":
+				this.cardvalue += 2;
+				
+			default:
+				this.cardvalue += Integer.parseInt(card.getValue());
+			}
+		}
+		return this.cardvalue;
+			
 	}
 	
 	public CardHand getMyHand() {

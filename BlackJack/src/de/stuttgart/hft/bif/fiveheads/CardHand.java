@@ -19,6 +19,10 @@ public class CardHand {
 		myCards.clear();
 	}
 
+	public ArrayList<Card> getMyCards() {
+		return myCards;
+	}
+
 	@Override
 	public String toString() {
 		return "CardHand [myCards=" + myCards + "]";

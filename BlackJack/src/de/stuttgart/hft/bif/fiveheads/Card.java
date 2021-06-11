@@ -10,6 +10,14 @@ public class Card {
 		this.symbol = symbol;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
+	public String getSymbol() {
+		return symbol;
+	}
+
 	@Override
 	public String toString() {
 		return "Card [value=" + value + ", symbol=" + symbol + "]";
