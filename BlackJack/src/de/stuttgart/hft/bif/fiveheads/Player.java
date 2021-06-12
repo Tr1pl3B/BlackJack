@@ -5,7 +5,6 @@ public class Player extends Participant {
 	private int stack;
 	private int insurance;
 	
-	
 	public boolean doubleIt(int stack) {
 		
 	}
@@ -44,6 +43,12 @@ public class Player extends Participant {
 	
 	public int getInsurance() {
 		return insurance;
+	}
+
+	@Override
+	public void goOut() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

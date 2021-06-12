@@ -35,6 +35,4 @@ public class CardHand {
 	public String toString() {
 		return "CardHand [myCards=" + myCards + "]";
 	}
-	
-	
 }

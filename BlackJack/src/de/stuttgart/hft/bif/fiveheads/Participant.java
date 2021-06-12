@@ -2,7 +2,7 @@ package de.stuttgart.hft.bif.fiveheads;
 
 import java.util.Random;
 
-public class Participant {
+public abstract class Participant {
 
 	private int cardvalue;
 	private CardHand myHand;
@@ -19,9 +19,7 @@ public class Participant {
 		myHand.adCard(playDeck.getCard(random_number));
 	}
 	
-	public void goOut() {
-		
-	}
+	public abstract void goOut();
 	
 	public int getCardvalue() {
 		this.cardvalue = 0;

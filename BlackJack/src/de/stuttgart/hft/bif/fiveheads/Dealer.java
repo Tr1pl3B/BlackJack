@@ -5,4 +5,10 @@ public class Dealer extends Participant{
 	public void payOut(int stack) {
 		
 	}
+
+	@Override
+	public void goOut() {
+		// TODO Auto-generated method stub
+		
+	}
 }
