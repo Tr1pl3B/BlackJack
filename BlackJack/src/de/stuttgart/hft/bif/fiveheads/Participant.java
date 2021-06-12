@@ -1,6 +1,5 @@
 package de.stuttgart.hft.bif.fiveheads;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Participant {
