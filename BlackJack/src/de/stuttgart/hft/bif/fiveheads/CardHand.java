@@ -22,6 +22,14 @@ public class CardHand {
 	public ArrayList<Card> getMyCards() {
 		return myCards;
 	}
+	
+	public int getLength() {
+		int length = 0;
+		for(Card card : this.myCards) {
+			length ++;
+		}
+		return length;
+	}
 
 	@Override
 	public String toString() {
