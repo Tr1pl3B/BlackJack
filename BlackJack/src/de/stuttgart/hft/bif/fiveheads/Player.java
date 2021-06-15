@@ -20,6 +20,7 @@ public class Player extends Participant {
 		credit += win;
 	}
 	
+	
 	private void setCredit(int credit) {
 		this.credit += credit;
 	}
