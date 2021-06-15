@@ -15,6 +15,10 @@ public class CardHand {
 		myCards.add(c);
 	}
 	
+	public Card getCard(int i) {
+		return myCards.get(i);
+	}
+	
 	public void clearHand() {
 		myCards.clear();
 	}
