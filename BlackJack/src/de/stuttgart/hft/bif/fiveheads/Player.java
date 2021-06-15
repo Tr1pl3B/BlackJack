@@ -10,6 +10,7 @@ public class Player extends Participant {
 	public void doubleIt(int stack) {
 		this.stack = stack *2;
 		p1.pickCard();
+		
 	}
 	
 	public boolean split(Cardhand myHand, int stack) {
