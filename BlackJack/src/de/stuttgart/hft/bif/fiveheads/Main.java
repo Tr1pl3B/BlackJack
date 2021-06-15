@@ -28,6 +28,6 @@ public class Main {
 			writer.write(collect);
 		}
 		writer.close();
-		//
+		
 	}
 }
