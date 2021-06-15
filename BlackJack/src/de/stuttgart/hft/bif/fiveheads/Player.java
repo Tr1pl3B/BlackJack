@@ -4,25 +4,24 @@ public class Player extends Participant {
 	private int credit;
 	private int stack;
 	private int insurance;
+
+	Player p1 = new Player();
 	
-	public boolean doubleIt(int stack) {
-		
+	public void doubleIt(int stack) {
+		this.stack = stack *2;
+		p1.pickCard();
 	}
 	
-	public void increaseStack() {
-		
-	}
-	
-	public boolean split(BlackJackCardDeck[] p, int stack) {
+	public boolean split(Cardhand myHand, int stack) {
 		
 	}
 	
 	public void adCredit(int win) {
-		
+		credit += win;
 	}
 	
 	private void setCredit(int credit) {
-		
+		this.credit += credit;
 	}
 	
 	public int getCredit() {
@@ -30,7 +29,7 @@ public class Player extends Participant {
 	}
 	
 	private void setStack(int stack) {
-		
+		this.stack += stack;
 	}
 	
 	public int getStack() {
@@ -38,7 +37,7 @@ public class Player extends Participant {
 	}
 	
 	private void setInsurance(int insurance) {
-		
+		this.insurance += insurance;
 	}
 	
 	public int getInsurance() {
