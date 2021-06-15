@@ -4,16 +4,15 @@ public class Player extends Participant {
 	private int credit;
 	private int stack;
 	private int insurance;
-
-	Player p1 = new Player();
 	
-	public void doubleIt(int stack) {
-		this.stack = stack *2;
-		p1.pickCard();
+	public void doubleIt() {
+		stack = stack *2;
+		this.pickCard();
 		
 	}
 	
-	public boolean split(Cardhand myHand, int stack) {
+	public void boolean split() {
+	
 		
 	}
 	
