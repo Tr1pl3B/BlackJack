@@ -11,6 +11,9 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		
+		Console console = new Console();
+		console.start();
+		
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
 		Bankaccount a = new Bankaccount("tripleb");
 		a.addCredit(150);
