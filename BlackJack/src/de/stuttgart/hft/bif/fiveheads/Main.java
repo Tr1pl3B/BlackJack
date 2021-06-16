@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
-		Player pl = new Player ();
+		
+		Player pl = new Player();
 		Dealer dl = new Dealer();
 		Console console = new Console();
 		console.programstart();
