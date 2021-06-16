@@ -7,11 +7,12 @@ public class Player extends Participant {
 	
 	Player pl1 = new Player();
 	Player pl2 = new Player();
-	CardHand p1 = new CardHand(pl1);
-	CardHand p2 = new CardHand(pl2);
+	CardHand ch1 = new CardHand(pl1);
+	CardHand ch2 = new CardHand(pl2);
 	public void doubleIt() {
 		stack = stack *2;
 		this.pickCard();
+		
 		
 	}
 	
@@ -21,19 +22,18 @@ public class Player extends Participant {
 		Card c2 = myHand.getCard(1);
 		
 		if (c1.getValue()==c2.getValue()) {
-			p1.clearHand();
-			p2.clearHand();
-			p1.adCard(c1);
-			p2.adCard(c2);
-			pl1.setStack(stack); // weiss nicht ob nötig, sieht unnötig aus
+			ch1.clearHand();
+			ch2.clearHand();
+			ch1.adCard(c1);
+			ch2.adCard(c2);
+			pl1.setStack(stack); // weiss nicht ob nötig, sieht unnötig aus//
 			pl1.setCredit(credit-stack);
-			pl2.setStack(stack); //unsicher welchen Stack er nimmt
+			pl2.setStack(stack); //unsicher welchen Stack er nimmt//
 			pl2.setCredit(credit-stack);
 			}else {
 				System.out.println("No split possible, only with two similar cards");
 			}
-		
-		
+				
 	}
 	
 	public void adCredit(int win) {
