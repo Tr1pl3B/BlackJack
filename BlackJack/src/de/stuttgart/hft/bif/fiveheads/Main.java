@@ -8,9 +8,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Main {
-
+	
 	public static void main(String[] args) throws IOException {
+		Player pl = new Player ();
+		Dealer dl = new Dealer();
+		Console console = new Console();
+		console.programstart();
 		
+		/*Scanner scan = new Scanner(System.in);
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
 		Bankaccount a = new Bankaccount("tripleb");
 		a.addCredit(150);
@@ -27,7 +32,7 @@ public class Main {
 			String collect = account.getUsername() + "," + account.getCredit()+'\n';
 			writer.write(collect);
 		}
-		writer.close();
+		writer.close();*/
 		
 		
 	}

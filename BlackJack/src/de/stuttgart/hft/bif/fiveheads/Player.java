@@ -17,7 +17,7 @@ public class Player extends Participant {
 	}
 	
 	public void split() {
-		
+	//test
 		Card c1 = myHand.getCard(0);
 		Card c2 = myHand.getCard(1);
 		
@@ -40,6 +40,9 @@ public class Player extends Participant {
 		credit += win;
 	}
 	
+	public void subCredit(int stack) {
+		this.credit -= stack;
+	}
 	
 	private void setCredit(int credit) {
 		this.credit += credit;
