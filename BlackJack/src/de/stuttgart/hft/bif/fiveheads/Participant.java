@@ -5,7 +5,7 @@ import java.util.Random;
 public abstract class Participant {
 
 	private int cardvalue;
-	private CardHand myHand;
+	protected CardHand myHand;
 	private BlackJackCardDeck playDeck = new BlackJackCardDeck();
 	
 	Participant(){
