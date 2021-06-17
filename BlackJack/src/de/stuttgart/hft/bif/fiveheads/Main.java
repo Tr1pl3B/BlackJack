@@ -30,6 +30,7 @@ public class Main {
 			System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + "),  is over 21");
 			pl.setStack(0);
 		}		
+		
 		console.endoftheround(pl, dl, r);
 		
 		/*if (r.winner(pl, dl)==pl) {
