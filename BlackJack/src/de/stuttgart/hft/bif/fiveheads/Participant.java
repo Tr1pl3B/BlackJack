@@ -28,18 +28,23 @@ public abstract class Participant {
 			
 			case "Jack":
 				this.cardvalue += 10;
+				break;
 				
 			case "Queen":
 				this.cardvalue += 10;
+				break;
 				
 			case "King":
 				this.cardvalue += 10;
+				break;
 				
 			case "Ace":
-				this.cardvalue += 2;
+				this.cardvalue += 1;
+				break;
 				
 			default:
 				this.cardvalue += Integer.parseInt(card.getValue());
+				break;
 			}
 		}
 		return this.cardvalue;
