@@ -15,16 +15,16 @@ public class Main {
 		Dealer dl = new Dealer();
 		Rules r = new Rules ();
 		Console console = new Console();
-		console.programstart();
-		pl.setStack(console.getStackeingabe());
+		console.programStart();
+		pl.setStack(console.getStackEingabe());
 		pl.pickCard();
 		dl.pickCard();
 		pl.pickCard();
 		System.out.println("Your current hand is" + pl.getMyHand());
 		System.out.println("Dealers current card is" + dl.getMyHand());
-		console.checkafterfirstcard(pl, r); 
+		console.checkAfterFirstCard(pl, r); 
 		if(r.burned(pl)==false) {
-			console.dealersturn(dl, r);
+			console.dealersTurn(dl, r);
 		}else {
 			System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + ") ist over 21");
 		}
