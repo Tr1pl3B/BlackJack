@@ -51,8 +51,14 @@ public abstract class Participant {
 			
 	}
 	
+	public void setCardvalue(int value) {
+		this.cardvalue = value;
+	}
+	
 	public CardHand getMyHand() {
 		return myHand;
 	}
-	
+	public void clearMyHand() {
+		myHand.clearHand();
+	}
 }
