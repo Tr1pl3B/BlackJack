@@ -6,13 +6,14 @@ public class Console {
 	private int stackEingabe, inputAfterFirstCard, inputAfterEndOfTheRound;
 	private boolean condition = true;
 	
-	public void programStart()  {
+	public void programStart(Player pl)  {
 		Scanner scn = new Scanner(System.in);
 		while (true) {
 			System.out.println("Whats your stack in this round?");
 			String strStackeingabe = scn.nextLine();
 			try{
 				stackEingabe = Integer.parseInt(strStackeingabe);
+				pl.subCredit(stackEingabe);
 				break;
 			}
 			catch (NumberFormatException e) {
@@ -74,11 +75,11 @@ public class Console {
 				
 			}
 		}
-	public void endOfTheRound(Player pl, Dealer dl, Rules r) {
+	public boolean endOfTheRound(Player pl, Dealer dl, Rules r) {
 		Scanner scn = new Scanner(System.in);
 		if (r.winner(pl, dl)==pl)
 		{
-			System.out.println("You won with a cardvalue of " + pl.getCardvalue() + ". Your current credit is " + pl.getCredit());
+			System.out.println("You won with a cardvalue of " + pl.getCardvalue() + " /n " + ". Your current credit is " + pl.getCredit());
 		}else{
 			System.out.println("You lost your Stack of " + pl.getStack());	
 			}
@@ -91,7 +92,7 @@ public class Console {
 					System.out.println("Please insert only 1 or 2 and press enter" + "\n");
 				}
 				if (inputAfterEndOfTheRound==1 || inputAfterEndOfTheRound==2) {
-					
+					break;
 				}
 				
 				}
@@ -101,6 +102,13 @@ public class Console {
 				
 				}
 		}
+			if(inputAfterEndOfTheRound==1)
+			{
+				return true;			
+			}else {
+				return false;
+			}
+		
 	}
 	
 	public int getStackEingabe() {

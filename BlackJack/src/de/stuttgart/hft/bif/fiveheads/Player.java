@@ -49,7 +49,7 @@ public class Player extends Participant {
 	}
 	
 	public void setStack(int stack) { //habs public gemacht dami ich es setzten kann in der Main
-		this.stack += stack;
+		this.stack = stack;
 	}
 	
 	public int getStack() {

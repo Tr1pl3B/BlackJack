@@ -15,31 +15,35 @@ public class Main {
 		Dealer dl = new Dealer();
 		Rules r = new Rules ();
 		Console console = new Console();
-		console.programStart();
-		pl.setStack(console.getStackEingabe());
-		pl.pickCard();
-		dl.pickCard();
-		pl.pickCard();
-		System.out.println("Your current hand is" + pl.getMyHand());
-		System.out.println("Dealers current card is" + dl.getMyHand());
-		console.checkAfterFirstCard(pl, r); 
-		if(r.burned(pl)==false) {
-			console.dealersTurn(dl, r);
-			pl.adCredit(pl.getStack()*2);
-		}else {
-			System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + "),  is over 21");
-			pl.setStack(0);
-		}		
-		
-		//console.endOfTheRound(pl, dl, r);
-		
-		/*if (r.winner(pl, dl)==pl) {
-			System.out.println("CONGRATES, YOU WON");
-		}else if (r.winner(pl, dl)==dl) {
-			System.out.println("Sorry, you lost");
+		while (true) {
+			console.programStart(pl);
+			pl.setStack(console.getStackEingabe());
+			pl.pickCard();
+			dl.pickCard();
+			pl.pickCard();
+			System.out.println("Your current hand is" + pl.getMyHand());
+			System.out.println("Dealers current card is" + dl.getMyHand());
+			console.checkAfterFirstCard(pl, r); 
+			if(r.burned(pl)==false) {
+				console.dealersTurn(dl, r);
+				pl.adCredit(pl.getStack()*2);
+			}else {
+				System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + "),  is over 21");
+				pl.setStack(0);
+			}
+			if(console.endOfTheRound(pl, dl, r) == true)
+			{
+				pl.setCardvalue(0);
+				pl.clearMyHand();
+				dl.setCardvalue(0);
+				dl.clearMyHand();
+			}else {
+				break;
+			} 
 		}
+		
+		System.exit(0);
 
-		}
 		/*Scanner scan = new Scanner(System.in);
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
 		Bankaccount a = new Bankaccount("tripleb");
