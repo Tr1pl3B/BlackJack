@@ -7,15 +7,13 @@ public class Player extends Participant {
 
 	CardHand ch1 = new CardHand(this);
 	CardHand ch2 = new CardHand(this);
+	
 	public void doubleIt() {
 		stack = stack *2;
 		this.pickCard();
 	}
 
-	
-	
 	public void split() {
-	//test
 		Card c1 = myHand.getCard(0);
 		Card c2 = myHand.getCard(1);
 		
