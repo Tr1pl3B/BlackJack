@@ -15,7 +15,15 @@ public class Main {
 		Dealer dl = new Dealer();
 		Console console = new Console();
 		console.programstart();
-		
+		pl.setStack(console.getStackeingabe());
+		pl.pickCard();
+		dl.pickCard();
+		pl.pickCard();
+		System.out.println("Your current hand is" + pl.getMyHand());
+		System.out.println("Dealers current card is" + dl.getMyHand());
+		console.checkafterfirstcard(pl);
+		dl.pickCard();
+		System.out.println("your cardvalue is " + pl.getCardvalue());
 		/*Scanner scan = new Scanner(System.in);
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
 		Bankaccount a = new Bankaccount("tripleb");
