@@ -7,7 +7,6 @@ public class Console {
 	private int inputafterfirstcard;
 	private boolean condition = true;
 	
-	
 	public void programstart()  {
 		Scanner scn = new Scanner(System.in);
 		while (true) {
@@ -23,13 +22,16 @@ public class Console {
 				}					
 			}
 		}
-	public void checkafterfirstcard(Player pl){
+	public void checkafterfirstcard(Player pl, Rules r){
 		
 		Scanner scn = new Scanner(System.in);
 		
-		while (condition==true) { 
-		System.out.println("What's your next move" + "\n" + "press [1] to hit and get another card" + "\n" + "press [2] to stand and you will not get another card" + "\n" );	
-		
+		while (condition==true) {
+			if (r.burned(pl)==true) {
+			System.out.println("You are burned, your cardvalue is " + pl.getCardvalue() + " so it is over 21" + "\n");
+			break;
+			} 
+			System.out.println("Your cardvalue is " + pl.getCardvalue() + "\n" + "What's your next move? " + "\n" +"press [1] to hit and get another card" + "\n" + "press [2] to stand and you will not get another card" + "\n" );	
 				while(true) {
 					String input = scn.nextLine();
 				try{
@@ -50,17 +52,31 @@ public class Console {
 							}
 								if (inputafterfirstcard==1) {
 								 pl.pickCard();
-								 System.out.println("Would you like to get another card ?" + "\n");
 								 System.out.println("Your current hand is" + pl.getMyHand() + "\n");
 								}else if (inputafterfirstcard==2) {
 									condition=false;
-									System.out.println("Your current hand is" + pl.getMyHand() + "\n");
+									System.out.println("Your current hand is " + pl.getMyHand() + "with a value of " + pl.getCardvalue()+ "\n");
 								}
 		}
-		
+		s
 		
 		}
-	
+	public void dealersturn(Dealer dl, Rules r) {
+		while(true) {
+				dl.pickCard();
+				System.out.println("Dealer picked another card, his cardhand is" + dl.getMyHand());
+				if(dl.getCardvalue()>=17) {
+					if(dl.getCardvalue()>21) {
+						System.out.println("Dealer just burned himself with a cardhand of" + dl.getMyHand() + "\n" + "Its value " + dl.getCardvalue() + " is over 21 " );
+						break;
+					}
+					System.out.println("Dealers current cardhand is" + dl.getMyHand() + "and he decided to go out, with a value of " + dl.getCardvalue());
+					break;
+					}
+				
+			}
+		}
+
 	
 	public int getStackeingabe() {
 		return Stackeingabe;

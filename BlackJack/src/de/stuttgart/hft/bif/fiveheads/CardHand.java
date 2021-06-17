@@ -1,6 +1,7 @@
 package de.stuttgart.hft.bif.fiveheads;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class CardHand {
 	
@@ -37,6 +38,11 @@ public class CardHand {
 
 	@Override
 	public String toString() {
-		return "CardHand [myCards=" + myCards + "]";
+		String myCardsAusgabe = "";
+		
+		for (Card card:myCards) {
+			myCardsAusgabe = myCardsAusgabe + " " + card.getValue() + " of " + card.getSymbol() + " ";
+		}
+		return myCardsAusgabe;
 	}
 }

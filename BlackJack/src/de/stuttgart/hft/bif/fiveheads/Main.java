@@ -13,6 +13,7 @@ public class Main {
 		
 		Player pl = new Player();
 		Dealer dl = new Dealer();
+		Rules r = new Rules ();
 		Console console = new Console();
 		console.programstart();
 		pl.setStack(console.getStackeingabe());
@@ -21,9 +22,20 @@ public class Main {
 		pl.pickCard();
 		System.out.println("Your current hand is" + pl.getMyHand());
 		System.out.println("Dealers current card is" + dl.getMyHand());
-		console.checkafterfirstcard(pl);
-		dl.pickCard();
-		System.out.println("your cardvalue is " + pl.getCardvalue());
+		console.checkafterfirstcard(pl, r); 
+		if(r.burned(pl)==false) {
+			console.dealersturn(dl, r);
+		}else {
+			System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + ") ist over 21");
+		}
+		
+		/*if (r.winner(pl, dl)==pl) {
+			System.out.println("CONGRATES, YOU WON");
+		}else if (r.winner(pl, dl)==dl) {
+			System.out.println("Sorry, you lost");
+		}
+
+		}
 		/*Scanner scan = new Scanner(System.in);
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
 		Bankaccount a = new Bankaccount("tripleb");
