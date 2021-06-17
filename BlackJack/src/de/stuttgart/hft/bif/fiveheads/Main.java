@@ -25,9 +25,12 @@ public class Main {
 		console.checkafterfirstcard(pl, r); 
 		if(r.burned(pl)==false) {
 			console.dealersturn(dl, r);
+			pl.adCredit(pl.getStack()*2);
 		}else {
-			System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + ") ist over 21");
-		}
+			System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + "),  is over 21");
+			pl.setStack(0);
+		}		
+		console.endoftheround(pl, dl, r);
 		
 		/*if (r.winner(pl, dl)==pl) {
 			System.out.println("CONGRATES, YOU WON");

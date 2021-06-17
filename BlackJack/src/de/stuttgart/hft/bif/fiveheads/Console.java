@@ -3,8 +3,7 @@ package de.stuttgart.hft.bif.fiveheads;
 import java.util.Scanner;
 
 public class Console {
-	private int Stackeingabe;
-	private int inputafterfirstcard;
+	private int Stackeingabe, inputafterfirstcard, inputafterendoftheround;
 	private boolean condition = true;
 	
 	public void programstart()  {
@@ -58,7 +57,7 @@ public class Console {
 									System.out.println("Your current hand is " + pl.getMyHand() + "with a value of " + pl.getCardvalue()+ "\n");
 								}
 		}
-		s
+		
 		
 		}
 	public void dealersturn(Dealer dl, Rules r) {
@@ -67,7 +66,7 @@ public class Console {
 				System.out.println("Dealer picked another card, his cardhand is" + dl.getMyHand());
 				if(dl.getCardvalue()>=17) {
 					if(dl.getCardvalue()>21) {
-						System.out.println("Dealer just burned himself with a cardhand of" + dl.getMyHand() + "\n" + "Its value " + dl.getCardvalue() + " is over 21 " );
+						System.out.println("Dealer just burned himself with a cardhand of" + dl.getMyHand() + "\n" + "His value "  + dl.getCardvalue() + " is over 21 " );
 						break;
 					}
 					System.out.println("Dealers current cardhand is" + dl.getMyHand() + "and he decided to go out, with a value of " + dl.getCardvalue());
@@ -76,7 +75,34 @@ public class Console {
 				
 			}
 		}
-
+	public void endoftheround(Player pl, Dealer dl, Rules r) {
+		Scanner scn = new Scanner(System.in);
+		if (r.winner(pl, dl)==pl)
+		{
+			System.out.println("You won with a cardvalue of " + pl.getCardvalue() + ". Your current credit is " + pl.getCredit());
+		}else{
+			System.out.println("You lost your Stack of " + pl.getStack());	
+			}
+		System.out.println("You wanna play another Round?"+"\n" + "Enter [1] to play another round \n" + "Enter [2] to stop playing");
+		while(true) {
+		String input = scn.nextLine();
+				try{
+				inputafterendoftheround = Integer.parseInt(input);
+				if (inputafterendoftheround>2 || inputafterendoftheround<=0) {
+					System.out.println("Please insert only 1 or 2 and press enter" + "\n");
+				}
+				if (inputafterendoftheround==1 || inputafterendoftheround==2) {
+					
+				}
+				
+				}
+				catch (NumberFormatException e) {
+					
+					System.out.println("Please insert only 1 or 2 and press enter" + "\n");
+				
+				}
+		}
+	}
 	
 	public int getStackeingabe() {
 		return Stackeingabe;
