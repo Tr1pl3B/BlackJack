@@ -3,16 +3,16 @@ package de.stuttgart.hft.bif.fiveheads;
 import java.util.Scanner;
 
 public class Console {
-	private int Stackeingabe, inputafterfirstcard, inputafterendoftheround;
+	private int stackEingabe, inputAfterFirstCard, inputAfterEndOfTheRound;
 	private boolean condition = true;
 	
-	public void programstart()  {
+	public void programStart()  {
 		Scanner scn = new Scanner(System.in);
 		while (true) {
 			System.out.println("Whats your stack in this round?");
 			String strStackeingabe = scn.nextLine();
 			try{
-				Stackeingabe = Integer.parseInt(strStackeingabe);
+				stackEingabe = Integer.parseInt(strStackeingabe);
 				break;
 			}
 			catch (NumberFormatException e) {
@@ -21,7 +21,7 @@ public class Console {
 				}					
 			}
 		}
-	public void checkafterfirstcard(Player pl, Rules r){
+	public void checkAfterFirstCard(Player pl, Rules r){
 		
 		Scanner scn = new Scanner(System.in);
 		
@@ -34,11 +34,11 @@ public class Console {
 				while(true) {
 					String input = scn.nextLine();
 				try{
-					inputafterfirstcard = Integer.parseInt(input);
-					if (inputafterfirstcard>2 || inputafterfirstcard<=0) {
+					inputAfterFirstCard = Integer.parseInt(input);
+					if (inputAfterFirstCard>2 || inputAfterFirstCard<=0) {
 						System.out.println("Please insert only 1 or 2 and press enter" + "\n");
 					}
-					if (inputafterfirstcard==1 || inputafterfirstcard==2) {
+					if (inputAfterFirstCard==1 || inputAfterFirstCard==2) {
 						break;
 					}
 					
@@ -49,18 +49,17 @@ public class Console {
 					
 						}
 							}
-								if (inputafterfirstcard==1) {
+								if (inputAfterFirstCard==1) {
 								 pl.pickCard();
 								 System.out.println("Your current hand is" + pl.getMyHand() + "\n");
-								}else if (inputafterfirstcard==2) {
+								}else if (inputAfterFirstCard==2) {
 									condition=false;
 									System.out.println("Your current hand is " + pl.getMyHand() + "with a value of " + pl.getCardvalue()+ "\n");
 								}
-		}
-		
-		
-		}
-	public void dealersturn(Dealer dl, Rules r) {
+		}	
+	}
+	
+	public void dealersTurn(Dealer dl, Rules r) {
 		while(true) {
 				dl.pickCard();
 				System.out.println("Dealer picked another card, his cardhand is" + dl.getMyHand());
@@ -75,7 +74,7 @@ public class Console {
 				
 			}
 		}
-	public void endoftheround(Player pl, Dealer dl, Rules r) {
+	public void endOfTheRound(Player pl, Dealer dl, Rules r) {
 		Scanner scn = new Scanner(System.in);
 		if (r.winner(pl, dl)==pl)
 		{
@@ -87,11 +86,11 @@ public class Console {
 		while(true) {
 		String input = scn.nextLine();
 				try{
-				inputafterendoftheround = Integer.parseInt(input);
-				if (inputafterendoftheround>2 || inputafterendoftheround<=0) {
+				inputAfterEndOfTheRound = Integer.parseInt(input);
+				if (inputAfterEndOfTheRound>2 || inputAfterEndOfTheRound<=0) {
 					System.out.println("Please insert only 1 or 2 and press enter" + "\n");
 				}
-				if (inputafterendoftheround==1 || inputafterendoftheround==2) {
+				if (inputAfterEndOfTheRound==1 || inputAfterEndOfTheRound==2) {
 					
 				}
 				
@@ -104,7 +103,7 @@ public class Console {
 		}
 	}
 	
-	public int getStackeingabe() {
-		return Stackeingabe;
+	public int getStackEingabe() {
+		return stackEingabe;
 	}
 }
