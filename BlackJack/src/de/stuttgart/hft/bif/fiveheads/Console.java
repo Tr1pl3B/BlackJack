@@ -143,7 +143,7 @@ public class Console {
 				}
 				System.out.println("Dealers current cardhand is" + dl.getMyHand() + "and he decided to go out, with a value of " + dl.getCardvalue());
 				break;
-			}	
+			}	 
 		}
 	}
 	

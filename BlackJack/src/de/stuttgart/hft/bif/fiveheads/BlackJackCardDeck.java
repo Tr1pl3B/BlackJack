@@ -16,7 +16,7 @@ public class BlackJackCardDeck {
 				for(int j = 0; j < 13; j++) {
 					deck[k] = new Card(value[j], symbol[i]);
 					k++;
-				}
+				} 
 			}
 		}
 	}

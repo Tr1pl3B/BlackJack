@@ -16,7 +16,6 @@ public class Player extends Participant {
 	public void split() {
 		Card c1 = myHand.getCard(0);
 		Card c2 = myHand.getCard(1);
-		
 		if (c1.getValue()==c2.getValue()) {
 			ch1.clearHand();
 			ch2.clearHand();
@@ -63,9 +62,5 @@ public class Player extends Participant {
 
 	@Override
 	public void goOut() {
-		// TODO Auto-generated method stub
-		
 	}
-	
-	
 }

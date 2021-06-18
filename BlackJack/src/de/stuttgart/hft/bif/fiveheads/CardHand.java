@@ -7,7 +7,6 @@ public class CardHand {
 	
 	private ArrayList<Card> myCards;
 	
-	
 	CardHand(Participant p){
 		myCards = new ArrayList<Card>();
 	}
@@ -39,7 +38,6 @@ public class CardHand {
 	@Override
 	public String toString() {
 		String myCardsAusgabe = "";
-		
 		for (Card card:myCards) {
 			myCardsAusgabe = myCardsAusgabe + " " + card.getValue() + " of " + card.getSymbol() + " ";
 		}

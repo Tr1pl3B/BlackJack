@@ -17,7 +17,7 @@ public abstract class Participant {
 		int upperbound = 312;
 		int random_number = number.nextInt(upperbound);
 		myHand.adCard(playDeck.getCard(random_number));
-	}
+	} 
 	
 	public abstract void goOut();
 	

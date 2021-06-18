@@ -17,7 +17,7 @@ public class Bankaccount {
 	
 	public void addCredit(int win) {
 		this.credit += win;
-	}
+	} 
 	
 	public void subCredit(int insert) {
 		this.credit -= insert;

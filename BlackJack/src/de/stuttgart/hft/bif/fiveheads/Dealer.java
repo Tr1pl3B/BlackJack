@@ -8,7 +8,5 @@ public class Dealer extends Participant{
 
 	@Override
 	public void goOut() {
-		// TODO Auto-generated method stub
-		
 	}
 }

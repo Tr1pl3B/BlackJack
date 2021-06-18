@@ -19,7 +19,7 @@ public class Card {
 	}
 
 	@Override
-	public String toString() {
+	public String toString() { 
 		return value + " of " + symbol;
 	}
 }
