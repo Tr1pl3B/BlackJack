@@ -15,14 +15,21 @@ public class Main {
 		Dealer dl = new Dealer();
 		Rules r = new Rules ();
 		Console console = new Console();
-		while (true) { 
+		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
+		
+		getUserData(accounts);
+		
+		while (true) {
 			console.programStart(pl);
 			pl.setStack(console.getStackEingabe());
 			pl.pickCard();
 			dl.pickCard();
 			pl.pickCard();
-			System.out.println("Your current hand is" + pl.getMyHand());
-			System.out.println("Dealers current card is" + dl.getMyHand());
+			
+			if(r.blackJack(pl) == false) {
+				System.out.println("Your current hand is" + pl.getMyHand());
+				System.out.println("Dealers current card is" + dl.getMyHand());
+			}
 			console.checkAfterFirstCard(pl, r); 
 			if(r.burned(pl)==false) {
 				console.dealersTurn(dl, r);
@@ -39,10 +46,13 @@ public class Main {
 			}else {
 				break;
 			} 
-		} 
-		 
+		}
+		
 		System.exit(0);
-
+		 
+		
+		
+		
 		/*Scanner scan = new Scanner(System.in);
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
 		Bankaccount a = new Bankaccount("tripleb");
@@ -63,5 +73,27 @@ public class Main {
 		writer.close();*/
 		
 		
+	}
+	
+	public static void getUserData(ArrayList<Bankaccount> accounts) throws FileNotFoundException, IOException {
+		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/buchh/Desktop/userdata.csv"))){
+			String lineInput;
+			String[] column = null;
+			Bankaccount account = null;
+			while((lineInput = fileReader.readLine()) != null) {
+				if((lineInput.isEmpty()) == false) {
+					column = lineInput.split(",");
+					String username = column[0];
+					String credit = column[1];
+					account = new Bankaccount(username, credit);
+					accounts.add(account);
+					if(column.length != 2) {
+						System.err.println("There is a faulty line in userdata.csv: It's in this line " + lineInput);
+						continue;
+					}
+					System.out.println(accounts);
+				}
+			}
+		}
 	}
 }
