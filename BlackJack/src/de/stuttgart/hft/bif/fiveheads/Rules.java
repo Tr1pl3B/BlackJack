@@ -37,7 +37,7 @@ public class Rules {
 	}
 	
 	
-	public boolean blackJack(Player p) {
+	public boolean blackJack(Participant p) {
 		
 		if(p.getMyHand().getLength() == 2) {
 			String[] value = new String[2];
@@ -98,56 +98,7 @@ public class Rules {
 		
 		return false;
 	}
-	
-	
-	public boolean blackJack(Dealer p) {
 		
-		if(p.getMyHand().getLength() == 2) {
-			String[] value = new String[2];
-			int i = 0;
-			for(Card card :p.getMyHand().getMyCards() ) {
-				value[i] = card.getValue();
-				i++;
-			}
-			
-			switch (value[0]){
-			
-			case "10":
-				if(value[1] == "Ace") {
-					return true;
-				} else {
-					return false;
-				}
-				
-			case "Jack":
-				if(value[1] == "Ace") {
-					return true;
-				} else {
-					return false;
-				}
-				
-			case "Queen":
-				if(value[1] == "Ace") {
-					return true;
-				} else {
-					return false;
-				}
-				
-			case "King":
-				if(value[1] == "Ace") {
-					return true;
-				} else {
-					return false;
-				}
-			} 
-			
-		} else {
-			return false;
-		}
-		
-		return false;
-	}
-	
 	
 	public boolean tripleSeven(Player p) {
 		
