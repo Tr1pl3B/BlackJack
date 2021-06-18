@@ -21,7 +21,7 @@ public class Console {
 			
 				}					
 			}
-		
+		 
 		}
 	public void checkAfterFirstCard(Player pl, Rules r){
 		
