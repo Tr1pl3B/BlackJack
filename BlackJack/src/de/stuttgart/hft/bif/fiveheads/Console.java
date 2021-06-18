@@ -32,6 +32,15 @@ public class Console {
 				break;
 			} 	
 				while(true) {
+					if(r.blackJack(pl)==true) {
+						System.out.println("Congrates you got a black jack" );
+						inputAfterFirstCard = 3;
+						break;
+					}else if(r.tripleSeven(pl)==true) {
+						System.out.println("Congrates you got a Triple Seven, with a carddeck of" + pl.getMyHand());
+						inputAfterFirstCard = 0;
+						break;
+					}
 					System.out.println("Your cardvalue is " + pl.getCardvalue() + "\n");
 					System.out.println("What's your next move? " + "\n" +"press [1] to hit and get another card" + "\n" + "press [2] to stand and you will not get another card" + "\n" );
 					String input = scn.nextLine();
@@ -54,8 +63,13 @@ public class Console {
 					} else if (inputAfterFirstCard==2) {
 						condition=false;
 						System.out.println("Your current hand is " + pl.getMyHand() + "with a value of " + pl.getCardvalue()+ "\n");
+					} else if (inputAfterFirstCard==3) {
+						System.out.println("Your current Hand is" +  pl.getMyHand());
+						System.out.println("Lets see what the dealer gets");
+						break;
 					}
-		}	
+		}
+		condition = true ;
 	}
 	
 	public void dealersTurn(Dealer dl, Rules r) {
@@ -76,11 +90,13 @@ public class Console {
 	public boolean endOfTheRound(Player pl, Dealer dl, Rules r) {
 		Scanner scn = new Scanner(System.in);
 		if (r.winner(pl, dl)==pl) {
-			System.out.println("You won with a cardvalue of " + pl.getCardvalue() + " /n " + ". Your current credit is " + pl.getCredit());
+			
+			System.out.println("You won with a cardvalue of " + pl.getCardvalue() + " \n " + " Your current credit is " + pl.getCredit());
 		} else {
+			
 			System.out.println("You lost your Stack, your new credit balance ist " + pl.getCredit());	
 		}
-		System.out.println("You wanna play another Round?"+"\n" + "Enter [1] to play another round \n" + "Enter [2] to stop playing");
+		System.out.println("You wanna play another Round?" + "\n" + "Enter [1] to play another round \n" + "Enter [2] to stop playing");
 		while(true) {
 			String input = scn.nextLine();
 			try{
