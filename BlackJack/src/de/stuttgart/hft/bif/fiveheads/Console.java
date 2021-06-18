@@ -1,12 +1,43 @@
 package de.stuttgart.hft.bif.fiveheads;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
 	private int stackEingabe, inputAfterFirstCard, inputAfterEndOfTheRound;
 	private boolean condition = true;
 	
-	public void programStart(Player pl)  {
+	public ArrayList<Bankaccount> programmStart(ArrayList<Bankaccount> accounts) throws FileNotFoundException, IOException {
+		
+		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/buchh/Desktop/userdata.csv"))){
+			String lineInput;
+			String[] column = null;
+			Bankaccount account = null;
+			while((lineInput = fileReader.readLine()) != null) {
+				if((lineInput.isEmpty()) == false) {
+					column = lineInput.split(",");
+					String username = column[0];
+					String credit = column[1];
+					account = new Bankaccount(username, credit);
+					accounts.add(account);
+					if(column.length != 2) {
+						System.err.println("There is a faulty line in userdata.csv: It's in this line " + lineInput);
+						continue;
+					}
+					System.out.println(accounts);
+				}
+			}
+		}
+		
+		return accounts;
+		
+	}
+	
+	public void gameStart(Player pl)  {
 		Scanner scn = new Scanner(System.in);
 		while (true) {
 			System.out.println("Whats your stack in this round?");

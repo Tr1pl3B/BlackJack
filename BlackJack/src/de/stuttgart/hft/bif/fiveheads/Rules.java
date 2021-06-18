@@ -76,6 +76,19 @@ public class Rules {
 				} else {
 					return false;
 				}
+				
+			case "Ace":
+				if(value[1] == "10") {
+					return true;
+				} else if(value[1] == "Jack") {
+					return true;
+				} else if(value[1] == "Queen") {
+					return true;
+				} else if(value[1] == "King") {
+					return true;
+				} else {
+					return false;
+				}
 			} 
 			
 		} else {
