@@ -53,6 +53,7 @@ public class Console {
 							break;
 						}
 					
+						
 					} catch (NumberFormatException e) {
 						System.out.println("Please insert only 1 or 2 and press enter" + "\n");
 					}
