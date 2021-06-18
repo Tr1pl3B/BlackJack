@@ -11,6 +11,11 @@ public class Bankaccount {
 		
 	}
 	
+	public Bankaccount(String username, String credit) {
+		this.username = username;
+		this.credit = Integer.parseInt(credit);
+	}
+	
 	public void addCredit(int win) {
 		this.credit += win;
 	}
