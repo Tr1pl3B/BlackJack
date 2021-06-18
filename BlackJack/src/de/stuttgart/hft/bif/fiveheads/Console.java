@@ -8,12 +8,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
-	private int stackEingabe, inputAfterFirstCard, inputDoubleRequest, inputAfterEndOfTheRound;
+	private int stackEingabe, inputAfterFirstCard, inputDoubleRequest, inputAfterEndOfTheRound, inputCreateUser;
 	private boolean condition = true;
 	private String inputUser;
 	private Bankaccount user;
 	
 	public ArrayList<Bankaccount> programmStart(ArrayList<Bankaccount> accounts, Player pl) {
+		
+		System.out.println("Welcome to BlackJack \n"
+				+ "");
 		
 		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/buchh/Desktop/userdata.csv"))){
 			String lineInput;
@@ -50,17 +53,64 @@ public class Console {
 			}
 			System.out.println("Welcome " + user.getUsername() + " you will start with a Credit of " + user.getCredit() + "\n");
 		} else {
-			System.out.println("Please enter your username.");
+			System.out.println("Press [1] to login with an existing user \n"
+					+ "Press [2] to creat a new user");
 			Scanner scn = new Scanner(System.in);
-			inputUser = scn.nextLine();
-			for(Bankaccount account : accounts) {
-				if(account.getUsername().equals(inputUser)) {
-					user = account;
-					pl.setCredit(user.getIntCredit());
+			while(true) {
+	            String input = scn.nextLine();
+	            try{
+	            	inputCreateUser = Integer.parseInt(input);
+	                if (inputCreateUser>2 || inputCreateUser<=0) {
+	                    System.out.println("Please insert only 1 or 2 and press enter" + "\n");
+	                }
+	                if (inputCreateUser==1 || inputCreateUser==2) {
+	                    break;
+	                }
+
+	            }
+	            catch (NumberFormatException e) {
+
+	                System.out.println("Please insert only 1 or 2 and press enter" + "\n");
+
+	            }
+	        }
+			boolean check = false;
+			if(inputCreateUser == 2) {
+				System.out.println("Please insert your username.");
+				inputUser = scn.nextLine();
+				accounts.add(new Bankaccount(inputUser));
+				for(Bankaccount account : accounts) {
+					if(account.getUsername() == inputUser) {
+						user = account;
+						pl.setCredit(user.getIntCredit());
+						check = true;
+					}
+				}
+				System.out.println("Welcome " + user.getUsername() + " you will start with a Credit of " + user.getCredit() + "\n");
+			}
+			
+			while(check == false) {
+				System.out.println("Please enter your username.");
+				inputUser = scn.nextLine();
+				for(Bankaccount account : accounts) {
+					if(account.getUsername().equals(inputUser)) {
+						user = account;
+						pl.setCredit(user.getIntCredit());
+						check = true;
+					}
+				}
+				if(check == false) {
+					System.out.println("Please enter an existing username: \n"
+							+ "\n"
+							+ "Existing usernames:");
+					for(Bankaccount account : accounts) {
+						System.out.println(account.getUsername());
+					}
+					System.out.println("");
 				}
 			}
-			System.out.println("Welcome " + user.getUsername() + " your current credit balance is " + user.getCredit() + "\n");
 		}
+		System.out.println("Welcome " + user.getUsername() + " your current credit balance is " + user.getCredit() + "\n");
 		return accounts;
 		
 	}
@@ -72,8 +122,12 @@ public class Console {
 			String strStackeingabe = scn.nextLine();
 			try{
 				stackEingabe = Integer.parseInt(strStackeingabe);
+				if(stackEingabe >= 5) {
 				pl.subCredit(stackEingabe);
 				break;
+				} else {
+					System.out.println("Your stack must be grather 4");
+				}
 			}
 			catch (NumberFormatException e) {
 				System.out.println("Please insert a number!");

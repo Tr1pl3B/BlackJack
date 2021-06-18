@@ -40,6 +40,7 @@ public class Main {
 			}
 			if(r.blackJack(pl)==true && r.blackJack(dl)==true) {
 				System.out.println("Sorry the Dealer also has Blackjack, your stack will be refunded to you");
+				pl.adCredit(pl.getStack());
 				break;
 			}
 			
