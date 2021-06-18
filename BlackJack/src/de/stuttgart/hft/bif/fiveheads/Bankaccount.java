@@ -8,7 +8,6 @@ public class Bankaccount {
 	public Bankaccount(String username) {
 		this.username = username;
 		credit = 10000;
-		
 	}
 	
 	public Bankaccount(String username, String credit) {

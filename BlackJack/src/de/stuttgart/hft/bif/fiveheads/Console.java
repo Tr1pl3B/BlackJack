@@ -30,7 +30,6 @@ public class Console {
 						System.err.println("There is a faulty line in userdata.csv: It's in this line " + lineInput);
 						continue;
 					}
-					
 				}
 			}
 		} catch (FileNotFoundException e) {

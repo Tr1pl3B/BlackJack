@@ -60,7 +60,6 @@ public class Main {
 		console.refreshCredit(accounts, pl);
 		saveUserdata(accounts);
 		System.exit(0);
-		
 	}
 		
 	public static void saveUserdata(ArrayList<Bankaccount> accounts) throws IOException{

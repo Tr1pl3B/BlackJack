@@ -26,8 +26,7 @@ public class Player extends Participant {
 			adCredit(credit-stack);
 			}else {
 				System.out.println("No split possible, only with two similar cards");
-			}
-				
+			}	
 	}
 	
 	public void adCredit(int win) {

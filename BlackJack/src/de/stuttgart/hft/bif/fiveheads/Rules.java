@@ -25,7 +25,6 @@ public class Rules {
 		} else {
 			return null;
 		}
-		
 	}
 	
 	public boolean burned(Participant p) {
