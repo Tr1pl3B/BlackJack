@@ -20,7 +20,7 @@ public class Console {
 				System.out.println("Please insert a number!");
 			 
 				}					
-			}
+			} 
 		 
 		}
 	public void checkAfterFirstCard(Player pl, Rules r){

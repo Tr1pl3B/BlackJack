@@ -40,7 +40,7 @@ public class Main {
 					System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + "),  is over 21");
 					pl.setStack(0);
 				}
-			}
+			} 
 			if(r.blackJack(pl)==true && r.blackJack(dl)==true) {
 				System.out.println("Sorry the Dealer also has Blackjack, your stack will be refunded to you");
 				break;
