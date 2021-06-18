@@ -6,7 +6,7 @@ public class Console {
 	private int stackEingabe, inputAfterFirstCard, inputAfterEndOfTheRound;
 	private boolean condition = true;
 	
-	public void programStart(Player pl)  {
+	public void gameStart(Player pl)  {
 		Scanner scn = new Scanner(System.in);
 		while (true) {
 			System.out.println("Whats your stack in this round?");
@@ -39,7 +39,7 @@ public class Console {
 						break;
 					}else if(r.tripleSeven(pl)==true) {
 						System.out.println("Congrates you got a Triple Seven, with a carddeck of" + pl.getMyHand());
-						inputAfterFirstCard = 0;
+						inputAfterFirstCard = 4;
 						break;
 					}
 					System.out.println("Your cardvalue is " + pl.getCardvalue() + "\n");
@@ -69,7 +69,11 @@ public class Console {
 						System.out.println("Your current Hand is" +  pl.getMyHand());
 						System.out.println("Lets see what the dealer gets");
 						break;
+					}else if(inputAfterFirstCard==4) {
+						System.out.println("You won, your deck is" + pl.getMyHand());
+						break;
 					}
+					
 		} 
 		condition = true ;
 	}
