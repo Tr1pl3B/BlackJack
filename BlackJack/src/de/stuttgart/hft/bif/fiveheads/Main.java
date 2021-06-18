@@ -15,7 +15,7 @@ public class Main {
 		Dealer dl = new Dealer();
 		Rules r = new Rules ();
 		Console console = new Console();
-		while (true) {
+		while (true) { 
 			console.programStart(pl);
 			pl.setStack(console.getStackEingabe());
 			pl.pickCard();
@@ -40,7 +40,7 @@ public class Main {
 				break;
 			} 
 		}
-		
+		 
 		System.exit(0);
 
 		/*Scanner scan = new Scanner(System.in);
