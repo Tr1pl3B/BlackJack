@@ -39,7 +39,7 @@ public class Main {
 			}else {
 				break;
 			} 
-		}
+		} 
 		 
 		System.exit(0);
 
