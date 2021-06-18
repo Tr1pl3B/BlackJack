@@ -23,7 +23,7 @@ public class Player extends Participant {
 			ch1.adCard(c1);
 			ch2.adCard(c2);
 			stack2 = stack;
-			setCredit(credit-stack);
+			adCredit(credit-stack);
 			}else {
 				System.out.println("No split possible, only with two similar cards");
 			}
@@ -38,8 +38,8 @@ public class Player extends Participant {
 		this.credit -= stack;
 	}
 	
-	private void setCredit(int credit) {
-		this.credit += credit;
+	public void setCredit(int credit) {
+		this.credit = credit;
 	}
 	
 	public int getCredit() {

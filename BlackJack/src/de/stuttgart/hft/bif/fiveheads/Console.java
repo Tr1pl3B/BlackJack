@@ -10,8 +10,10 @@ import java.util.Scanner;
 public class Console {
 	private int stackEingabe, inputAfterFirstCard, inputAfterEndOfTheRound;
 	private boolean condition = true;
+	private String inputUser;
+	private Bankaccount user;
 	
-	public ArrayList<Bankaccount> programmStart(ArrayList<Bankaccount> accounts) throws FileNotFoundException, IOException {
+	public ArrayList<Bankaccount> programmStart(ArrayList<Bankaccount> accounts, Player pl) {
 		
 		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/buchh/Desktop/userdata.csv"))){
 			String lineInput;
@@ -28,11 +30,38 @@ public class Console {
 						System.err.println("There is a faulty line in userdata.csv: It's in this line " + lineInput);
 						continue;
 					}
-					System.out.println(accounts);
+					
 				}
 			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException i) {
+			i.printStackTrace();
 		}
-		
+		if(accounts.isEmpty() == true) {
+			System.out.println("Please creat your first user.");
+			Scanner scn = new Scanner(System.in);
+			inputUser = scn.nextLine();
+			accounts.add(new Bankaccount(inputUser));
+			for(Bankaccount account : accounts) {
+				if(account.getUsername() == inputUser) {
+					user = account;
+					pl.setCredit(user.getIntCredit());
+				}
+			}
+			System.out.println("Welcome " + user.getUsername() + " you will start with a Credit of " + user.getCredit() + "\n");
+		} else {
+			System.out.println("Please enter your username.");
+			Scanner scn = new Scanner(System.in);
+			inputUser = scn.nextLine();
+			for(Bankaccount account : accounts) {
+				if(account.getUsername().equals(inputUser)) {
+					user = account;
+					pl.setCredit(user.getIntCredit());
+				}
+			}
+			System.out.println("Welcome " + user.getUsername() + " your current credit balance is " + user.getCredit() + "\n");
+		}
 		return accounts;
 		
 	}
@@ -97,7 +126,6 @@ public class Console {
 						condition=false;
 						System.out.println("Your current hand is " + pl.getMyHand() + "with a value of " + pl.getCardvalue()+ "\n");
 					} else if (inputAfterFirstCard==3) {
-						System.out.println("Your current Hand is" +  pl.getMyHand());
 						System.out.println("Lets see what the dealer gets");
 						break;
 					}
@@ -117,6 +145,14 @@ public class Console {
 				System.out.println("Dealers current cardhand is" + dl.getMyHand() + "and he decided to go out, with a value of " + dl.getCardvalue());
 				break;
 			}	
+		}
+	}
+	
+	public void refreshCredit(ArrayList<Bankaccount> accounts, Player pl) {
+		for(Bankaccount account : accounts) {
+			if(account.getUsername().equals(inputUser)) {
+				account.setCredit(pl.getCredit());
+			}
 		}
 	}
 	

@@ -24,8 +24,16 @@ public class Bankaccount {
 		this.credit -= insert;
 	}
 	
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+	
 	public String getCredit() {
 		return String.valueOf(credit);
+	}
+	
+	public int getIntCredit() {
+		return credit;
 	}
 	
 	public String getUsername() {

@@ -100,13 +100,13 @@ public class Rules {
 	}
 		
 	
-	public boolean tripleSeven(Player p) {
+	public boolean tripleSeven(Player pl) {
 		
-		if(p.getMyHand().getLength() == 3 ) {
+		if(pl.getMyHand().getLength() == 3 ) {
 			String[] value = new String[3];
 			int i = 0;
 			boolean sevens = true;
-			for(Card card :p.getMyHand().getMyCards() ) {
+			for(Card card :pl.getMyHand().getMyCards() ) {
 				value[i] = card.getValue();
 				if(value[i] != "7") {
 					sevens = false;
@@ -114,7 +114,7 @@ public class Rules {
 				i++;
 			}
 			if(sevens == true) {
-				p.adCredit(p.getStack() + Math.toIntExact(Math.round(p.getStack() * 1.5)));
+				pl.adCredit(pl.getStack() + pl.getStack() + Math.toIntExact(Math.round(pl.getStack() * 1.5)));
 			}
 			return sevens;
 		}

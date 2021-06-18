@@ -13,10 +13,9 @@ public class Main {
 		Console console = new Console();
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
 		
-		//getUserData(accounts);
+		accounts = console.programmStart(accounts, pl);
 		
 		while (true) {
-			accounts = console.programmStart(accounts);
 			console.gameStart(pl);
 			pl.setStack(console.getStackEingabe());
 			pl.pickCard();
@@ -45,7 +44,7 @@ public class Main {
 			
 			if(r.blackJack(pl)==true && r.blackJack(dl)==false )
 			{
-				pl.adCredit(pl.getStack()+ (pl.getStack()*(3/2)) );
+				pl.adCredit(pl.getStack() + pl.getStack() + Math.toIntExact(Math.round(pl.getStack() * 1.5)));
 			}
 			
 			if(console.endOfTheRound(pl, dl, r) == true)
@@ -58,20 +57,26 @@ public class Main {
 						break;
 					}
 		}
-		
+		console.refreshCredit(accounts, pl);
+		saveUserdata(accounts);
 		System.exit(0);
-		 
+		
 	}
 		
 	public static void saveUserdata(ArrayList<Bankaccount> accounts) throws IOException{
 
-		FileWriter writer = new FileWriter("C:/Users/buchh/Desktop/userdata.csv");
-		
-		for(Bankaccount account : accounts) {
+		try (FileWriter writer = new FileWriter("C:/Users/buchh/Desktop/userdata.csv")) {
+			for(Bankaccount account : accounts) {
 			String collect = account.getUsername() + "," + account.getCredit()+'\n';
 			writer.write(collect);
 		}
-		writer.close();
+			writer.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException i) {
+			i.printStackTrace();
+		}
+		
 	}	
 	
 	
