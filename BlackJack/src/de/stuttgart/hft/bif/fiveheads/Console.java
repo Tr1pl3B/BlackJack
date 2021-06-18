@@ -70,10 +70,10 @@ public class Console {
 						System.out.println("Lets see what the dealer gets");
 						break;
 					}
-		}
+		} 
 		condition = true ;
 	}
-	
+	 
 	public void dealersTurn(Dealer dl, Rules r) {
 		while(true) {
 			dl.pickCard();
