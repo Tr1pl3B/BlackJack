@@ -115,7 +115,7 @@ public class Console {
 					
 				System.out.println("Please insert only 1 or 2 and press enter" + "\n");
 				
-			}
+			} 
 		}
 		if(inputAfterEndOfTheRound==1) {
 				return true;			
