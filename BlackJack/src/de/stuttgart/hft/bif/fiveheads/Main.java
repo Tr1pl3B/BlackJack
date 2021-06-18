@@ -23,6 +23,8 @@ public class Main {
 			pl.pickCard();
 			if(r.blackJack(pl) == false) {
 				System.out.println("Your current hand is" + pl.getMyHand());
+				console.doubleRequest(pl);
+				System.out.println("Your current hand is" + pl.getMyHand());
 				System.out.println("Dealers current card is" + dl.getMyHand());
 			}
 			console.checkAfterFirstCard(pl, r);

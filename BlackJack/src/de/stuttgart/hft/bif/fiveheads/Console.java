@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
-	private int stackEingabe, inputAfterFirstCard, inputAfterEndOfTheRound;
+	private int stackEingabe, inputAfterFirstCard, inputDoubleRequest, inputAfterEndOfTheRound;
 	private boolean condition = true;
 	private String inputUser;
 	private Bankaccount user;
@@ -146,6 +146,36 @@ public class Console {
 			}	 
 		}
 	}
+	
+	public void doubleRequest(Player pl) {
+		Scanner scn = new Scanner(System.in);
+        System.out.println("You cardvalue is "+ pl.getCardvalue());
+        System.out.println("You wanna double?" + "\n" + "Enter [1] to double"+ "\n" + "Enter [2] not to double" );
+
+        while(true) {
+            String input = scn.nextLine();
+            try{
+                inputDoubleRequest = Integer.parseInt(input);
+                if (inputDoubleRequest>2 || inputDoubleRequest<=0) {
+                    System.out.println("Please insert only 1 or 2 and press enter" + "\n");
+                }
+                if (inputDoubleRequest==1 || inputDoubleRequest==2) {
+                    break;
+                }
+
+            }
+            catch (NumberFormatException e) {
+
+                System.out.println("Please insert only 1 or 2 and press enter" + "\n");
+
+            }
+        }
+        if(inputDoubleRequest==1) {
+            pl.doubleIt();
+            System.out.println("You doubled your stack."+" \n"+"Your stack right now is " + pl.getStack());
+            System.out.println("After doubled it, your carddeck is" + pl.getMyHand());
+        } 
+    }
 	
 	public void refreshCredit(ArrayList<Bankaccount> accounts, Player pl) {
 		for(Bankaccount account : accounts) {
