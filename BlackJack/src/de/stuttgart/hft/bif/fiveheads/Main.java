@@ -25,7 +25,7 @@ public class Main {
 			pl.pickCard();
 			dl.pickCard();
 			pl.pickCard();
-			
+			 
 			if(r.blackJack(pl) == false) {
 				System.out.println("Your current hand is" + pl.getMyHand());
 				System.out.println("Dealers current card is" + dl.getMyHand());

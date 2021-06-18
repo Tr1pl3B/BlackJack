@@ -18,7 +18,7 @@ public class Console {
 			}
 			catch (NumberFormatException e) {
 				System.out.println("Please insert a number!");
-			
+			 
 				}					
 			}
 		 
