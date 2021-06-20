@@ -8,17 +8,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
-	private int stackEingabe, inputAfterFirstCard, inputDoubleRequest, inputAfterEndOfTheRound, inputCreateUser;
+	private int stackEingabe, inputAfterFirstCard, inputDoubleRequest, inputAfterEndOfTheRound, inputCreateUser, inputCheckInsurance, inputInsurance;
 	private boolean condition = true;
 	private String inputUser;
 	private Bankaccount user;
 	
 	public ArrayList<Bankaccount> programmStart(ArrayList<Bankaccount> accounts, Player pl) {
 		
-		System.out.println("Welcome to BlackJack \n"
-				+ "");
+		System.out.println("Welcome to BlackJack \n"+ "");
 		
-		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/buchh/Desktop/userdata.csv"))){
+		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/legra/userdata.csv"))){
 			String lineInput;
 			String[] column = null;
 			Bankaccount account = null;
@@ -33,7 +32,7 @@ public class Console {
 						System.err.println("There is a faulty line in userdata.csv: It's in this line " + lineInput);
 						continue;
 					}
-				}
+				} 
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -136,6 +135,7 @@ public class Console {
 			} 
 		 
 		}
+	
 	public void checkAfterFirstCard(Player pl, Rules r){
 		
 		Scanner scn = new Scanner(System.in);
@@ -147,11 +147,12 @@ public class Console {
 			} 	
 				while(true) {
 					if(r.blackJack(pl)==true) {
-						System.out.println("Congrates you got a black jack" );
+						System.out.println("Congrates you got a black jack" + "\n" + "Your cardhand is " + pl.getMyHand());
 						inputAfterFirstCard = 3;
 						break;
 					}else if(r.tripleSeven(pl)==true) {
 						System.out.println("Congrates you got a Triple Seven, with a carddeck of" + pl.getMyHand());
+						pl.adCredit(pl.getStack() + pl.getStack() + Math.toIntExact(Math.round(pl.getStack() * 1.5)));
 						inputAfterFirstCard = 0;
 						break;
 					}
@@ -181,6 +182,8 @@ public class Console {
 					} else if (inputAfterFirstCard==3) {
 						System.out.println("Lets see what the dealer gets");
 						break;
+					}else if(inputAfterFirstCard==0) {
+						break;
 					}
 		} 
 		condition = true ;
@@ -199,7 +202,7 @@ public class Console {
 				break;
 			}	 
 		}
-	}
+	} 
 	
 	public void doubleRequest(Player pl) {
 		Scanner scn = new Scanner(System.in);
@@ -240,12 +243,15 @@ public class Console {
 	}
 	
 	public boolean endOfTheRound(Player pl, Dealer dl, Rules r) {
+		
 		Scanner scn = new Scanner(System.in);
 		if (r.winner(pl, dl)==pl) {
-			
+			pl.adCredit(getStackEingabe()*2);
 			System.out.println("You won with a cardvalue of " + pl.getCardvalue() + " \n " + " Your current credit is " + pl.getCredit());
-		} else {
-			
+		} else if(pl.getCardvalue()==dl.getCardvalue()) {
+			pl.adCredit(getStackEingabe());
+			System.out.println("Dealer also has the cardvalue of " + dl.getCardvalue() + "\n" + "Your Credits will be refunded" + "\n" + "Your current Credits : " + pl.getCredit());
+		}else {			
 			System.out.println("You lost your Stack, your new credit balance ist " + pl.getCredit());	
 		}
 		System.out.println("You wanna play another Round?" + "\n" + "Enter [1] to play another round \n" + "Enter [2] to stop playing");
@@ -272,6 +278,54 @@ public class Console {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean checkInsurance(Player pl, Dealer dl) {
+		
+		Scanner scn = new Scanner(System.in);
+				System.out.println("The Dealer has an Ass as first card.\n" + "You want to set an insurance? \n" + "Press [1] to set an insurance \n" + "Press [2] to keep playing without an insurance");
+					while(true) {
+						String input = scn.nextLine();
+						try{
+							inputCheckInsurance = Integer.parseInt(input);
+							if (inputCheckInsurance>2 || inputCheckInsurance<=0) {
+								System.out.println("Please insert only 1 or 2 and press enter" + "\n");
+							}
+							if (inputCheckInsurance==1 || inputCheckInsurance==2) {
+								break;
+							}
+							
+						}
+						catch (NumberFormatException e) {
+								
+							System.out.println("Please insert only 1 or 2 and press enter" + "\n");				
+						}  
+					}
+					if(inputCheckInsurance==1) {
+						System.out.println("How much should be the insurance ? ");
+						while(true) {
+							String input = scn.nextLine();
+							try{
+								inputInsurance = Integer.parseInt(input);
+								if(inputInsurance<=0) {
+									throw new NumberFormatException();
+								}else {
+								break;
+								}
+							}
+							catch (NumberFormatException e) {
+									
+								System.out.println("Please insert valid a Number");
+								
+													}
+							}
+						pl.subCredit(inputInsurance);
+						pl.setInsurance(inputInsurance);
+						return true;
+					}else {
+						return false;
+					}
+					 	
 	}
 	
 	public int getStackEingabe() {

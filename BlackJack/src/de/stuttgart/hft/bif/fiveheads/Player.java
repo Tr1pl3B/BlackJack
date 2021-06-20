@@ -52,7 +52,7 @@ public class Player extends Participant {
 		return stack;
 	}
 	
-	private void setInsurance(int insurance) {
+	public void setInsurance(int insurance) {
 		this.insurance += insurance;
 	}
 	
