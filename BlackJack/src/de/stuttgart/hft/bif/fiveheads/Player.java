@@ -9,6 +9,7 @@ public class Player extends Participant {
 	CardHand ch2 = new CardHand(this);
 	
 	public void doubleIt() {
+		this.subCredit(stack);
 		stack = stack *2;
 		this.pickCard();
 	}
