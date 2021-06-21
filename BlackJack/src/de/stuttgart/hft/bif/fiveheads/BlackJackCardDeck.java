@@ -28,6 +28,4 @@ public class BlackJackCardDeck {
 	public String toString() {
 		return "CardDeck deck= [" + Arrays.toString(deck);
 	}
-	
-	
 }

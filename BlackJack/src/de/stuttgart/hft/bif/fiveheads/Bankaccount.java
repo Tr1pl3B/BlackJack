@@ -43,5 +43,4 @@ public class Bankaccount {
 	public String toString() {
 		return "Bankaccount [username=" + username + ", credit=" + credit + "]";
 	}
-	
 }

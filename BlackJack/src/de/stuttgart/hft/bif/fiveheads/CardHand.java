@@ -1,7 +1,6 @@
 package de.stuttgart.hft.bif.fiveheads;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class CardHand {
 	
@@ -29,7 +28,7 @@ public class CardHand {
 	
 	public int getLength() {
 		int length = 0;
-		for(Card card : this.myCards) {
+		for(@SuppressWarnings("unused") Card card : this.myCards) {
 			length ++;
 		}
 		return length;
