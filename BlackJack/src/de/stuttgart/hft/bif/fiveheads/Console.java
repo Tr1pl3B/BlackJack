@@ -12,12 +12,13 @@ public class Console {
 	private boolean condition = true;
 	private String inputUser;
 	private Bankaccount user;
+	private String path = "C:/Users/buchh/Desktop/userdata.csv";
 	
 	public ArrayList<Bankaccount> programmStart(ArrayList<Bankaccount> accounts, Player pl) {
 		
 		System.out.println("Welcome to BlackJack \n"+ "");
 		
-		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/legra/userdata.csv"))){
+		try (BufferedReader fileReader = new BufferedReader(new FileReader(path))){
 			String lineInput;
 			String[] column = null;
 			Bankaccount account = null;
@@ -326,6 +327,10 @@ public class Console {
 						return false;
 					}
 					 	
+	}
+	
+	public String getPath() {
+		return path;
 	}
 	
 	public int getInputStack() {

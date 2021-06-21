@@ -78,13 +78,13 @@ public class Main {
 					}
 		}
 		console.refreshCredit(accounts, pl);
-		saveUserdata(accounts);
+		saveUserdata(accounts, console);
 		System.exit(0);
 	}
 		
-	public static void saveUserdata(ArrayList<Bankaccount> accounts) throws IOException{
+	public static void saveUserdata(ArrayList<Bankaccount> accounts, Console console) throws IOException{
 
-		try (FileWriter writer = new FileWriter("C:/Users/buchh/Desktop/userdata.csv")) {
+		try (FileWriter writer = new FileWriter(console.getPath())) {
 			for(Bankaccount account : accounts) {
 			String collect = account.getUsername() + "," + account.getCredit()+'\n';
 			writer.write(collect);
