@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Console {
-	private int stackEingabe, inputAfterFirstCard, inputDoubleRequest, inputAfterEndOfTheRound, inputCreateUser, inputCheckInsurance, inputInsurance;
+	private int inputStack, inputAfterFirstCard, inputDoubleRequest, inputAfterEndOfTheRound, inputCreateUser, inputCheckInsurance, inputInsurance;
 	private boolean condition = true;
 	private String inputUser;
 	private Bankaccount user;
@@ -17,7 +17,7 @@ public class Console {
 		
 		System.out.println("Welcome to BlackJack \n"+ "");
 		
-		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/buchh/Desktop/userdata.csv"))){
+		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/legra/userdata.csv"))){
 			String lineInput;
 			String[] column = null;
 			Bankaccount account = null;
@@ -30,10 +30,10 @@ public class Console {
 					accounts.add(account);
 					if(column.length != 2) {
 						System.err.println("There is a faulty line in userdata.csv: It's in this line " + lineInput);
-				 		continue;
+						continue;
 					}
 				} 
-			}
+			} 
 		} catch (FileNotFoundException e) {
 			System.out.println("There are no existing useres \n");
 		} catch (IOException i) {
@@ -120,9 +120,9 @@ public class Console {
 			System.out.println("Whats your stack in this round?");
 			String strStackeingabe = scn.nextLine();
 			try{
-				stackEingabe = Integer.parseInt(strStackeingabe);
-				if(stackEingabe >= 5) {
-				pl.subCredit(stackEingabe);
+				inputStack = Integer.parseInt(strStackeingabe);
+				if(inputStack >= 5) {
+				pl.subCredit(inputStack);
 				break;
 				} else {
 					System.out.println("Your stack must be grather 4");
@@ -142,7 +142,7 @@ public class Console {
 		
 		while (condition==true) {
 			if (r.burned(pl)==true) {
-				System.out.println("You are burned, your cardvalue is " + pl.getCardvalue() + " so it is over 21" + "\n");
+				System.out.println("You are burned, your cardvalue is " + pl.getCardvalue(pl,r) + " so it is over 21" + "\n");
 				break;
 			} 	
 				while(true) {
@@ -156,7 +156,7 @@ public class Console {
 						inputAfterFirstCard = 0;
 						break;
 					}
-					System.out.println("Your cardvalue is " + pl.getCardvalue() + "\n");
+					System.out.println("Your cardvalue is " + pl.getCardvalue(pl,r) + "\n");
 					System.out.println("What's your next move? " + "\n" +"press [1] to hit and get another card" + "\n" + "press [2] to stand and you will not get another card" + "\n" );
 					String input = scn.nextLine();
 					try{
@@ -178,7 +178,7 @@ public class Console {
 						System.out.println("Your current hand is" + pl.getMyHand() + "\n");
 					} else if (inputAfterFirstCard==2) {
 						condition=false;
-						System.out.println("Your current hand is " + pl.getMyHand() + "with a value of " + pl.getCardvalue()+ "\n");
+						System.out.println("Your current hand is " + pl.getMyHand() + "with a value of " + pl.getCardvalue(pl,r)+ "\n");
 					} else if (inputAfterFirstCard==3) {
 						System.out.println("Lets see what the dealer gets");
 						break;
@@ -193,20 +193,20 @@ public class Console {
 		while(true) {
 			dl.pickCard();
 			System.out.println("Dealer picked another card, his cardhand is" + dl.getMyHand());
-			if(dl.getCardvalue()>=17) {
-				if(dl.getCardvalue()>21) {
-					System.out.println("Dealer just burned himself with a cardhand of" + dl.getMyHand() + "\n" + "His value "  + dl.getCardvalue() + " is over 21 " );
+			if(dl.getCardvalue(dl,r)>=17) {
+				if(dl.getCardvalue(dl,r)>21) {
+					System.out.println("Dealer just burned himself with a cardhand of" + dl.getMyHand() + "\n" + "His value "  + dl.getCardvalue(dl,r) + " is over 21 " );
 					break;
 				}
-				System.out.println("Dealers current cardhand is" + dl.getMyHand() + "and he decided to go out, with a value of " + dl.getCardvalue());
+				System.out.println("Dealers current cardhand is" + dl.getMyHand() + "and he decided to go out, with a value of " + dl.getCardvalue(dl,r));
 				break;
 			}	 
 		}
 	} 
 	
-	public void doubleRequest(Player pl) {
+	public void doubleRequest(Player pl, Rules r) {
 		Scanner scn = new Scanner(System.in);
-        System.out.println("You cardvalue is "+ pl.getCardvalue());
+        System.out.println("You cardvalue is "+ pl.getCardvalue(pl,r));
         System.out.println("You wanna double?" + "\n" + "Enter [1] to double"+ "\n" + "Enter [2] not to double" );
 
         while(true) {
@@ -246,11 +246,11 @@ public class Console {
 		
 		Scanner scn = new Scanner(System.in);
 		if (r.winner(pl, dl)==pl) {
-			pl.adCredit(getStackEingabe()*2);
-			System.out.println("You won with a cardvalue of " + pl.getCardvalue() + " \n " + " Your current credit is " + pl.getCredit());
-		} else if(pl.getCardvalue()==dl.getCardvalue()) {
-			pl.adCredit(getStackEingabe());
-			System.out.println("Dealer also has the cardvalue of " + dl.getCardvalue() + "\n" + "Your Credits will be refunded" + "\n" + "Your current Credits : " + pl.getCredit());
+			pl.adCredit(getInputStack()*2);
+			System.out.println("You won with a cardvalue of " + pl.getCardvalue(pl,r) + " \n " + " Your current credit is " + pl.getCredit());
+		} else if(pl.getCardvalue(pl,r)==dl.getCardvalue(pl,r)) {
+			pl.adCredit(getInputStack());
+			System.out.println("Dealer also has the cardvalue of " + dl.getCardvalue(pl,r) + "\n" + "Your Credits will be refunded" + "\n" + "Your current Credits : " + pl.getCredit());
 		}else {			
 			System.out.println("You lost your Stack, your new credit balance ist " + pl.getCredit());	
 		}
@@ -308,7 +308,7 @@ public class Console {
 							try{
 								inputInsurance = Integer.parseInt(input);
 								if(inputInsurance<=0) {
-									throw new NumberFormatException();
+									throw new NumberFormatException(); 
 								}else {
 								break;
 								}
@@ -328,7 +328,7 @@ public class Console {
 					 	
 	}
 	
-	public int getStackEingabe() {
-		return stackEingabe;
+	public int getInputStack() {
+		return inputStack;
 	}
 }

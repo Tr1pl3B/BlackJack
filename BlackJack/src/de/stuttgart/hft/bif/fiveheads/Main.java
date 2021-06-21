@@ -12,25 +12,25 @@ public class Main {
 		Rules r = new Rules ();
 		Console console = new Console();
 		ArrayList<Bankaccount> accounts = new ArrayList<Bankaccount>();
-		
+		 
 		accounts = console.programmStart(accounts, pl);
 		
 		while (true) {
 			boolean insurancesetted = false;
 			console.gameStart(pl);
-			pl.setStack(console.getStackEingabe());
+			pl.setStack(console.getInputStack());
 			pl.pickCard();
 			dl.pickCard();
 			pl.pickCard();
 			System.out.println("Dealers hand is" + dl.getMyHand());
-			if(dl.getCardvalue()==1 || dl.getCardvalue()==11) { //erstmal gecheckt ob der Dealer als erste Karte ein Ass hat
+			if(dl.getCardvalue(dl,r)==1 || dl.getCardvalue(dl,r)==11) { //erstmal gecheckt ob der Dealer als erste Karte ein Ass hat
 				if(console.checkInsurance(pl, dl)==true) {		//wird gefragt ob der Spieler eine Insurance gesetzt haben möchte
 					insurancesetted = true;						//wenn ja wird diese Variable auf true gesetzt damit man später weiss
 				}												// bei der Auszahlung ob die insurance gesetzt wurde
 			}
 			if(r.blackJack(pl) == false) {
 				System.out.println("Your current hand is" + pl.getMyHand());
-				console.doubleRequest(pl);
+				console.doubleRequest(pl,r);
 				System.out.println("Your current hand is" + pl.getMyHand());
 				System.out.println("Dealers current card is" + dl.getMyHand());
 			}
@@ -41,7 +41,7 @@ public class Main {
 		 			console.dealersTurn(dl, r);
 					  	
 				}else {
-					System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue() + "),  is over 21");
+					System.out.println("sorry you just lost, your cardvalue (" + pl.getCardvalue(pl,r) + "),  is over 21");
 					pl.setStack(0);
 				}
 			}

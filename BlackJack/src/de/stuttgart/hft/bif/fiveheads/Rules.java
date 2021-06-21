@@ -3,7 +3,7 @@ package de.stuttgart.hft.bif.fiveheads;
 public class Rules {
 
 	double multiplier = 1;
-	
+	 
 	public Participant winner(Player p, Dealer d) {
 		
 		if(burned(d) == true && burned(p) == false) {
@@ -18,22 +18,23 @@ public class Rules {
 			return p;
 		} else if(burned(d) == false && burned(p) == false && blackJack(p) == false && blackJack(d) == true) {
 			return d;
-		} else if(burned(d) == false && burned(p) == false && p.getCardvalue() < d.getCardvalue()) {
+		} else if(burned(d) == false && burned(p) == false && p.getCardvalue(p, this) < d.getCardvalue(p, this)) {
 			return d;
-		} else if(burned(d) == false && burned(p) == false && p.getCardvalue() > d.getCardvalue()) {
+		} else if(burned(d) == false && burned(p) == false && p.getCardvalue(p, this) > d.getCardvalue(p, this)) {
 			return p;
 		} else {
 			return null;
 		} 
-	}
+	} 
 	
 	public boolean burned(Participant p) {
-		if(p.getCardvalue() > 21) {
+		if(p.getCardvalue(p, this) > 21) {
+			
 			return true;
 		} else {
 			return false;
 		}
-	}
+	} 
 	
 	
 	public boolean blackJack(Participant p) {
