@@ -49,7 +49,7 @@ public abstract class Participant {
 		}
 		return this.cardvalue;
 			
-	}
+	} 
 	
 	public void setCardvalue(int value) {
 		this.cardvalue = value;

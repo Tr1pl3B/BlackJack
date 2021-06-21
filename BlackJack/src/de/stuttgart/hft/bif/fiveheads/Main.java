@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Main {
 	
 	public static void main(String[] args) throws IOException {
-		
+		 
 		Player pl = new Player();
 		Dealer dl = new Dealer();
 		Rules r = new Rules ();

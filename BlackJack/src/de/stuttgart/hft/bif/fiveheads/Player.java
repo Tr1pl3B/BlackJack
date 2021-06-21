@@ -13,7 +13,7 @@ public class Player extends Participant {
 		stack = stack *2;
 		this.pickCard();
 	}
-
+ 
 	public void split() {
 		Card c1 = myHand.getCard(0);
 		Card c2 = myHand.getCard(1);

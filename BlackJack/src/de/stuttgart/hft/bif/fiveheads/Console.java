@@ -30,7 +30,7 @@ public class Console {
 					accounts.add(account);
 					if(column.length != 2) {
 						System.err.println("There is a faulty line in userdata.csv: It's in this line " + lineInput);
-						continue;
+				 		continue;
 					}
 				} 
 			}
