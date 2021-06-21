@@ -17,7 +17,7 @@ public class Console {
 		
 		System.out.println("Welcome to BlackJack \n"+ "");
 		
-		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/legra/userdata.csv"))){
+		try (BufferedReader fileReader = new BufferedReader(new FileReader("C:/Users/buchh/Desktop/userdata.csv"))){
 			String lineInput;
 			String[] column = null;
 			Bankaccount account = null;
@@ -35,7 +35,7 @@ public class Console {
 				} 
 			}
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			//do nothing because It works anyway
 		} catch (IOException i) {
 			i.printStackTrace();
 		}

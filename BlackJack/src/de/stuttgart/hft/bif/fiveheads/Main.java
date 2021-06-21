@@ -84,7 +84,7 @@ public class Main {
 		
 	public static void saveUserdata(ArrayList<Bankaccount> accounts) throws IOException{
 
-		try (FileWriter writer = new FileWriter("C:/Users/legra/userdata.csv")) {
+		try (FileWriter writer = new FileWriter("C:/Users/buchh/Desktop/userdata.csv")) {
 			for(Bankaccount account : accounts) {
 			String collect = account.getUsername() + "," + account.getCredit()+'\n';
 			writer.write(collect);
