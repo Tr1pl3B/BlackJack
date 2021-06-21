@@ -35,7 +35,7 @@ public class Console {
 				} 
 			}
 		} catch (FileNotFoundException e) {
-			//do nothing because It works anyway
+			System.out.println("There are no existing useres \n");
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
