@@ -12,7 +12,7 @@ public class Console {
 	private boolean condition = true;
 	private String inputUser;
 	private Bankaccount user;
-	private String path = "C:/Users/buchh/Desktop/userdata.csv";
+	private String path = "C:/Users/buchh/Desktop/userdata.csv"; //zum Beispiel so: C:/Users/buchh/Desktop/userdata.csv
 	
 	public ArrayList<Bankaccount> programmStart(ArrayList<Bankaccount> accounts, Player pl) {
 		

@@ -2,19 +2,15 @@ package de.stuttgart.hft.bif.fiveheads;
 
 public class Rules {
 
-	double multiplier = 1;
-	 
 	public Participant winner(Player p, Dealer d) {
 		
 		if(burned(d) == true && burned(p) == false) {
 			return p;
 		} else if(tripleSeven(p) == true) {
-			multiplier = 1.5;
 			return p; 
 		} else if(burned(p) == true && burned(d) == false) {
 			return d;
 		} else if(burned(d) == false && burned(p) == false && blackJack(p) == true && blackJack(d) == false) {
-			multiplier = 1.5;
 			return p;
 		} else if(burned(d) == false && burned(p) == false && blackJack(p) == false && blackJack(d) == true) {
 			return d;
